@@ -1,0 +1,53 @@
+https://postman-echo.com/get?userId=777
+
+1. Проверить что вам приходить именно 200-й или 300-й.
+2. Завести три переменные числовые и вывести в консоль их сумму.
+3. Взять значение x-forwarded-port и к нему прибавить 3.
+*4.(Опицонально) обработаьть ошибку если сервер не доступен ,
+вывести в лог что сервер не доступен.
+5. Код или проект залить в гит и прислать ссылку на гит.
+
+----------------------------------------------------------
+----------------------------------------------------------
+
+
+---1---
+
+pm.test("200 or 300", function () {
+    pm.expect(pm.response.code).to.be.oneOf([200,300]);
+});
+
+
+---2---
+
+pm.test("test summa", function () {
+    var N1 = 4;
+    
+    var N2 = 7;
+    
+    var N3 = 9;
+    
+    var SUMMA = N1 + N2 + N3;
+    console.log (SUMMA);
+});
+    
+    var N2 = 7;
+    
+    var N3 = 9;
+    
+    var SUMMA = N1 + N2 + N3;
+    console.log (SUMMA);
+});
+
+
+---3---
+
+pm.test("test field forwarded port", function () {
+    var jsonData = pm.response.json();
+    var N4 = jsonData.headers['x-forwarded-port'];
+    var N5 = Number(N4) + 3;
+    console.log (N5);
+})
+
+
+
